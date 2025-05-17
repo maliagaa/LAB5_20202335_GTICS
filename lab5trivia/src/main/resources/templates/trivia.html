@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Trivia</title>
+</head>
+<body>
+<h1>Trivia - Responde las preguntas</h1>
+<form action="/user/resultados" method="post">
+  <div th:each="pregunta, iterStat : ${preguntas}">
+    <p>
+      <strong th:text="'Pregunta ' + ${iterStat.index + 1} + ': ' + ${pregunta.texto}"></strong><br>
+      <label><input type="radio" th:name="'respuesta_' + ${pregunta.id}" value="A"> <span th:text="${pregunta.opcionA}"></span></label><br>
+      <label><input type="radio" th:name="'respuesta_' + ${pregunta.id}" value="B"> <span th:text="${pregunta.opcionB}"></span></label><br>
+      <label><input type="radio" th:name="'respuesta_' + ${pregunta.id}" value="C"> <span th:text="${pregunta.opcionC}"></span></label><br>
+      <label><input type="radio" th:name="'respuesta_' + ${pregunta.id}" value="D"> <span th:text="${pregunta.opcionD}"></span></label><br>
+    </p>
+  </div>
+  <button type="submit">Enviar respuestas</button>
+</form>
+</body>
+</html>
